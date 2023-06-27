@@ -15,7 +15,3 @@ sources:
       - name: source_two_weekly_active_users
       - name: source_four_weekly_active_users
       - name: source_monthly_active_users
-
-  - name: stripe
-    tables:
-      - name: source_website_overview

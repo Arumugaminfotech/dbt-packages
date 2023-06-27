@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: ga4
+    database: awsdatacatalog
+    schema: wral-bronze-datalake
+    tables:
+      - name: ga4_source_daily_active_users
+      - name: ga4_source_devices
+      - name: ga4_source_locations
+      - name: ga4_source_pages
+      - name: ga4_source_traffic_sources
+      - name: ga4_source_website_overview
+      - name: ga4_source_weekly_active_users
+
+  - name: stripe
+    tables:
+      - name: source_website_overview
