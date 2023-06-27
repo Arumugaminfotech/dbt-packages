@@ -16,4 +16,4 @@ ga4_pages as (select
 from pages
 )
 
-select date, hostname, screenpageviews, pagepathplusquerystring, uuid, bouncerate, property_id, brand from ga4_pages where row_number = 1
+select date(date_parse(date,'%Y%m%d')) as date, hostname, screenpageviews, pagepathplusquerystring, uuid, bouncerate, property_id, brand from ga4_pages where row_number = 1

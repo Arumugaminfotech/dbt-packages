@@ -19,5 +19,5 @@ ga4_website_overivew as (select
   ROW_NUMBER() over(partition by uuid order by _airbyte_emitted_at desc ) as row_number
 from website_overivew
 )
-select date, newusers, sessions, sessionsperuser, totalusers, averagesessionduration, screenpageviews, screenpageviewspersession, uuid, bouncerate, property_id, brand from ga4_website_overivew where row_number = 1
+select date(date_parse(date,'%Y%m%d')) as date, newusers, sessions, sessionsperuser, totalusers, averagesessionduration, screenpageviews, screenpageviewspersession, uuid, bouncerate, property_id, brand from ga4_website_overivew where row_number = 1
 

@@ -12,7 +12,3 @@ sources:
       - name: ga4_source_traffic_sources
       - name: ga4_source_website_overview
       - name: ga4_source_weekly_active_users
-
-  - name: stripe
-    tables:
-      - name: source_website_overview
