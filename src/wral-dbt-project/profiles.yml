@@ -1,0 +1,11 @@
+wral_ga_data_lake:
+  outputs:
+    dev:
+      database: awsdatacatalog
+      region_name: us-east-1
+      s3_data_dir: s3://wral-datalake-staging/google_analytics/
+      s3_staging_dir: s3://wral-athena-query-logs/dbt/
+      schema: wral-bronze-datalake
+      threads: 1
+      type: athena
+  target: dev

@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+  pre_build:
+    commands:
+      - AWS_REGION="us-east-1"
+      - REPOSITORY_URI="063187361786.dkr.ecr.us-east-1.amazonaws.com/google-analytics-dbt"
+      - aws --version
+      - echo 'region - ' - $AWS_REGION
+      - echo 'repository - ' $REPOSITORY_URI
+      - cd src/wral-dbt-project/
+      - cat profiles.yml
+      - cd ../
+      - echo Logging in to Amazon ECR
+      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 063187361786.dkr.ecr.us-east-1.amazonaws.com)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t  google-analytics-dbt .
+      - docker tag google-analytics-dbt:latest 063187361786.dkr.ecr.us-east-1.amazonaws.com/google-analytics-dbt:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Push the latest Docker Image...
+      - docker push 063187361786.dkr.ecr.us-east-1.amazonaws.com/google-analytics-dbt:latest
