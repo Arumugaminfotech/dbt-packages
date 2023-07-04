@@ -9,7 +9,7 @@ ga4_weekly_active_users as (select
   uuid,
   property_id,
   brand,
-  ROW_NUMBER() over(partition by uuid order by _airbyte_emitted_at desc ) as row_number
+  ROW_NUMBER() over(partition by date,property_id order by _airbyte_emitted_at desc ) as row_number
 from weekly_active_users
 )
 select date(date_parse(date,'%Y%m%d')) as date, active7dayusers, uuid, property_id, brand from ga4_weekly_active_users where row_number = 1

@@ -18,7 +18,7 @@ ga4_traffic_sources as (select
   screenpageviews,
   sessionmedium,
   brand,
-  ROW_NUMBER() over(partition by uuid order by _airbyte_emitted_at desc ) as row_number
+  ROW_NUMBER() over(partition by date,property_id,sessionsource,sessionmedium order by _airbyte_emitted_at desc ) as row_number
 from traffic_sources
 )
 select date(date_parse(date,'%Y%m%d')) as date, newusers, sessions, sessionsperuser, totalusers, averagesessionduration, screenpageviewspersession, uuid, bouncerate, property_id, sessionsource, screenpageviews, sessionmedium, brand from ga4_traffic_sources where row_number = 1

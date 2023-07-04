@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with locations as (
-    select *  from {{source('ua','source_locations')}}
+    select *  from {{source('ua','ua_source_locations')}}
 ),
 ua_locations as (select
   ga_date.member0 as date,
@@ -26,4 +26,4 @@ ua_locations as (select
   ROW_NUMBER() over(partition by ga_date.member0,view_id,ga_city,ga_metro,ga_country,ga_subcontinent,ga_continent,ga_region order by _airbyte_emitted_at desc ) as row_number
 from locations
 )
-select date,view_id,brand,city,metro,country,subcontinent,continent,users,pageviews,bouncerate,avgtimeonpage,newusers,avgsessionduration,pageviewspersession,exitrate,sessions,sessionsperuser from ua_locations where row_number = 1
+select date,view_id,brand,city,metro,country,subcontinent,continent,region,users,pageviews,bouncerate,avgtimeonpage,newusers,avgsessionduration,pageviewspersession,exitrate,sessions,sessionsperuser from ua_locations where row_number = 1

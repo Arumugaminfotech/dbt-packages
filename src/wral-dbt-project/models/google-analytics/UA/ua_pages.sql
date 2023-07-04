@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with pages as (
-    select *  from {{source('ua','source_pages')}}
+    select *  from {{source('ua','ua_source_pages')}}
 ),
 ua_pages as (select
   ga_date.member0 as date,

@@ -12,7 +12,7 @@ ga4_pages as (select
   bouncerate,
   property_id,
   brand,
-  ROW_NUMBER() over(partition by uuid order by _airbyte_emitted_at desc ) as row_number
+  ROW_NUMBER() over(partition by date,property_id,hostname,pagepathplusquerystring order by _airbyte_emitted_at desc ) as row_number
 from pages
 )
 

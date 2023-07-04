@@ -3,15 +3,15 @@ version: 2
 sources:
   - name: ua
     database: awsdatacatalog
-    schema: wral-datalake
+    schema: wral-bronze-datalake
     tables:
-      - name: source_website_overview
-      - name: source_devices
-      - name: source_locations
-      - name: source_traffic_sources
-      - name: source_pages
-      - name: source_daily_active_users
-      - name: source_weekly_active_users
-      - name: source_two_weekly_active_users
-      - name: source_four_weekly_active_users
-      - name: source_monthly_active_users
+      - name: ua_source_website_overview
+      - name: ua_source_devices
+      - name: ua_source_locations
+      - name: ua_source_traffic_sources
+      - name: ua_source_pages
+      - name: ua_source_daily_active_users
+      - name: ua_source_weekly_active_users
+      - name: ua_source_two_weekly_active_users
+      - name: ua_source_four_weekly_active_users
+      - name: ua_source_monthly_active_users

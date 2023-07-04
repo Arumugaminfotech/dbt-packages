@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with traffic_sources as (
-    select *  from {{source('ua','source_traffic_sources')}}
+    select *  from {{source('ua','ua_source_traffic_sources')}}
 ),
 ua_traffic_sources as (select
   ga_date.member0 as date,

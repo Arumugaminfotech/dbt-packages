@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with daily_active_users as (
-    select *  from {{source('ua','source_daily_active_users')}}
+    select *  from {{source('ua','ua_source_daily_active_users')}}
 ),
 ua_daily_active_users as (select
   ga_date.member0 as date,

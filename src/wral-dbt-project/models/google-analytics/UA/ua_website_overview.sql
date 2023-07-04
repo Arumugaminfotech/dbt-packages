@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with website_overivew as (
-    select *  from {{source('ua','source_website_overview')}} 
+    select *  from {{source('ua','ua_source_website_overview')}} 
 ),
 ua_website_overivew as (select
   ga_date.member0 as date,

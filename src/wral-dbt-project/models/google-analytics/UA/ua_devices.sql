@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with devices as (
-    select *  from {{source('ua','source_devices')}}
+    select *  from {{source('ua','ua_source_devices')}}
 ),
 ua_devices as (select
   ga_date.member0 as date,
