@@ -1,4 +1,4 @@
   SELECT date,view_id,operatingsystem,devicecategory,browser, COUNT(*) AS count
-  FROM {{ref('ua_devices')}}
+  FROM ua_devices
   GROUP BY date,view_id,operatingsystem,devicecategory,browser 
   HAVING COUNT(*) > 1
